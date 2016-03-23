@@ -30,7 +30,7 @@ class Primes
     else
       upper_bound = n * Math.log(n) + n * Math.log(Math.log(n))
       unfiltered = [nil, nil, *2..upper_bound]
-      (2..upper_bound.to_i).each do |i|
+      (2..Math.sqrt(upper_bound).to_i).each do |i|
         (i**2..upper_bound.to_i).step(i).each do |m|
           if unfiltered[i]
             unfiltered[m] = nil
@@ -43,7 +43,7 @@ class Primes
 
   # ORDER  n^2 -- can this be optimized?
   def self.prime_times_table(n)
-    primes = primes_array(n) 
+    primes = primes_array(n)
     biggest_length = biggest_prime_multiple(primes).to_s.length
 
     print " "*(biggest_length + 1)
