@@ -26,7 +26,7 @@ end
 def primes_array(n)
   # until we have n numbers in the array,
   # we will look for primes
-  prime_storage = []
+  prime_storage = [1]
   test_prime = 2
   while(prime_storage.length < n) do
     if is_prime?(test_prime)
@@ -39,9 +39,7 @@ end
 
 def prime_times_table(n)
   primes = primes_array(n)
-  print "1"
-
-  # primes.each do |p|
-    # print " " + p.to_s + " "
-  # end
+  primes.each do |p|
+    print " " + p.to_s + " "
+  end
 end

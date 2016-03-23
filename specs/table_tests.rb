@@ -11,6 +11,12 @@ RSpec.describe "Primes" do
     end
   end
 
+  context "primes_array" do
+    it "returns an array of all primes from 1 to n" do
+      expect(primes_array(5)).to eq([1,2,3,5,7])
+    end
+  end
+
   context "prime_times_table" do
     it "outputs the correct table for a single given number" do
       expect{prime_times_table(1)}.to output("1").to_stdout
