@@ -13,17 +13,17 @@ RSpec.describe "Primes" do
 
   context "primes_array" do
     it "returns an array of all primes from 1 to n" do
-      expect(primes_array(5)).to eq([1,2,3,5,7])
+      expect(primes_array(5)).to eq([2,3,5,7,11])
     end
   end
 
   context "prime_times_table" do
     it "outputs the correct table for n = 1" do
-      expect{prime_times_table(1)}.to output("   1\n 1 1\n").to_stdout
+      expect{prime_times_table(1)}.to output("   2\n 2 4\n").to_stdout
     end
 
     it "outputs the correct table for n > 1" do
-      expect{prime_times_table(2)}.to output("   1 2\n 1 1 2\n 2 2 4\n").to_stdout
+      expect{prime_times_table(2)}.to output("   2 3\n 2 4 6\n 3 6 9\n").to_stdout
     end
   end
 end

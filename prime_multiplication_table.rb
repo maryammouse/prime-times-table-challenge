@@ -10,9 +10,9 @@
 # make sure there is no 0 remainder
 #
 
-# ORDER N
+# now order sqrt(n) !
 def is_prime?(n)
-  (2...n).each do |f|
+  (2..(Math.sqrt(n).to_i)).each do |f|
     if (n % f) == 0
       return false
     end
@@ -20,13 +20,13 @@ def is_prime?(n)
   true
 end
 
-# ORDER N^2 (? the while loop runs until n elements are in prime_array)
-# but is_prime is also order n...so this is n^2
+
+# ORDER n(sqrt(n)) (? the while loop runs until n elements are in prime_array)
 # can it be optimized? 
 def primes_array(n)
   # until we have n numbers in the array,
   # we will look for primes 
-  prime_storage = [1]
+  prime_storage = []
   test_prime = 2
   while(prime_storage.length < n) do
     if is_prime?(test_prime)
