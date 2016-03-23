@@ -30,7 +30,6 @@ RSpec.describe "Primes" do
     it "is order n(log(n))(log(log(n)))" do
       n = 1000
       basetime = Benchmark.realtime{Primes.primes_array(n)}
-      puts Math.log(basetime)
       upper_bound = (basetime * (Math.log(basetime))).abs
       # using (log(log(n))) results in domain errors 
       expect(Benchmark.realtime{Primes.primes_array(n*2)}).to be < upper_bound

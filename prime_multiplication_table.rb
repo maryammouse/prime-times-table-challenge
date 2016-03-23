@@ -53,11 +53,9 @@ class Primes
 
     primes.each do |p|
     puts ""
-      multiplied = [p]
+      print padding(biggest_length, p) + p.to_s
       primes.each do |prime|
-        multiplied.push(p * prime)
-      end
-      multiplied.each do |m|
+        m = p * prime
         print padding(biggest_length, m) + m.to_s
       end
     end
