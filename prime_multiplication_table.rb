@@ -1,3 +1,4 @@
+require 'benchmark'
 # What is a prime?
 # A prime is a number that has only itself and 1 as factors
 # Factors of n are numbers smaller than n
@@ -12,7 +13,10 @@
 
 # now order sqrt(n) !
 def is_prime?(n)
-  (2..(Math.sqrt(n).to_i)).each do |f|
+  if n % 2 == 0 && n != 2
+    return false
+  end
+  (3..(Math.sqrt(n).to_i)).step(2).each do |f|
     if (n % f) == 0
       return false
     end
@@ -23,6 +27,9 @@ end
 
 # ORDER n(sqrt(n)) (? the while loop runs until n elements are in prime_array)
 # can it be optimized? 
+# we could make a Sieve of Eratosthenes (then we no longer use is_prime?)
+# however, the sieve does not return n primes,
+# it returns all primes less than n.
 def primes_array(n)
   # until we have n numbers in the array,
   # we will look for primes 
@@ -63,7 +70,7 @@ def prime_times_table(n)
   end
 end
 
-prime_times_table(10)
+# prime_times_table(2000000)
 #
 
 # ORDER n (instead of n^2)
