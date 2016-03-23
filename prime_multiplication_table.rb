@@ -30,19 +30,37 @@ end
 # we could make a Sieve of Eratosthenes (then we no longer use is_prime?)
 # however, the sieve does not return n primes,
 # it returns all primes less than n.
+# however, the Prime Number Theorem can tell us the upper bound on the 
+# nth prime, so that we can sieve over it! :) 
+
+# using Eratosthene's sieve, we now have O(n(log n)(log(log n)))
 def primes_array(n)
   # until we have n numbers in the array,
   # we will look for primes 
-  prime_storage = []
-  test_prime = 2
-  while(prime_storage.length < n) do
-    if is_prime?(test_prime)
-      prime_storage.push(test_prime)
+  if n < 6
+    prime_storage = []
+    test_prime = 2
+    while(prime_storage.length < n) do
+      if is_prime?(test_prime)
+        prime_storage.push(test_prime)
+      end
+      test_prime += 1
     end
-    test_prime += 1
+    prime_storage
+  else
+    upper_bound = n * Math.log(n) + n * Math.log(Math.log(n))
+    unfiltered = [nil, nil, *2..upper_bound]
+    (2..upper_bound.to_i).each do |i|
+      (i**2..upper_bound.to_i).step(i).each do |m|
+        if unfiltered[i]
+          unfiltered[m] = nil
+        end
+      end
+    end
+    unfiltered.compact
   end
-  prime_storage
 end
+
 
 # ORDER  n^2 -- can this be optimized?
 def prime_times_table(n)
@@ -71,17 +89,3 @@ def prime_times_table(n)
 end
 
 # prime_times_table(2000000)
-#
-
-# ORDER n (instead of n^2)
-# MATRIX = []
-# primes.each
-#   mult = []
-#   CREATE MULTIPLIED MATRIX with strings with correct padding
-# end
-# MATRIX.each do |array|
-#   print array
-# end
-#
-#
-#
