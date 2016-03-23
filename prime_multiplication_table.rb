@@ -62,4 +62,4 @@ def prime_times_table(n)
   end
 end
 
-prime_times_table(25)
+# prime_times_table(25)
