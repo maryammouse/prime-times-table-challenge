@@ -61,10 +61,27 @@ def primes_array(n)
   end
 end
 
+def old_primes_array(n)
+  # until we have n numbers in the array,
+  # we will look for primes 
+  prime_storage = []
+  test_prime = 2
+  while(prime_storage.length < n) do
+    if is_prime?(test_prime)
+      prime_storage.push(test_prime)
+    end
+    test_prime += 1
+  end
+end
 
-# ORDER  n^2 -- can this be optimized?
+puts Benchmark.measure{old_primes_array(100)}
+puts Benchmark.measure{old_primes_array(200)}
+puts Benchmark.measure{primes_array(100)}
+puts Benchmark.measure{primes_array(200)}
+
+# ORDER  n^4 definitely greater than n^2 -- can this be optimized?
 def prime_times_table(n)
-  primes = primes_array(n) # order n^2
+  primes = primes_array(n) # order n(log(n))(log(log(n)))
   biggest_multiples = []
   primes.each do |p|
     biggest_multiples.push(primes.max * p)
@@ -79,7 +96,7 @@ def prime_times_table(n)
   primes.each do |p| 
     multiplied = [p]
     primes.each do |prime| # order n^2
-      multiplied.push(p * prime)
+      multiplied.push(p * prime) # order n^2
     end
     multiplied.each do |m|
       print " " + (" "*(biggest_length - m.to_s.length).abs) + m.to_s
@@ -88,4 +105,6 @@ def prime_times_table(n)
   end
 end
 
-# prime_times_table(2000000)
+prime_times_table(10)
+
+

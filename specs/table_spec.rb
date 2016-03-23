@@ -39,6 +39,11 @@ RSpec.describe "Primes" do
     it "outputs the correct table for n > 1" do
       expect{prime_times_table(2)}.to output("   2 3\n 2 4 6\n 3 6 9\n").to_stdout
     end
+
+    it "is of order n^2 time complexity" do
+      basetime = Benchmark.realtime{prime_times_table(100)}
+      expect(Benchmark.realtime{prime_times_table(200)}).to be < basetime**2
+    end
   end
 end
 
