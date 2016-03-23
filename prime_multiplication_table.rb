@@ -17,8 +17,6 @@ class Primes
 
   # using Eratosthene's sieve, we now have O(n(log n)(log(log n)))
   def self.primes_array(n)
-    # until we have n numbers in the array,
-    # we will look for primes 
     if n < 6
       prime_storage = []
       test_prime = 2
@@ -45,7 +43,7 @@ class Primes
 
   # ORDER  n^2 -- can this be optimized?
   def self.prime_times_table(n)
-    primes = primes_array(n) # order n(log(n))(log(log(n)))
+    primes = primes_array(n) 
     biggest_length = biggest_prime_multiple(primes).to_s.length
 
     print " "*(biggest_length + 1)
@@ -56,7 +54,7 @@ class Primes
     primes.each do |p|
     puts ""
       multiplied = [p]
-      primes.each do |prime| # order n^2
+      primes.each do |prime|
         multiplied.push(p * prime)
       end
       multiplied.each do |m|
@@ -78,28 +76,9 @@ class Primes
     return (biggest_length - n.to_s.length).abs
   end
 
-  def old_primes_array(n)
-    # until we have n numbers in the array,
-    # we will look for primes 
-    prime_storage = []
-    test_prime = 2
-    while(prime_storage.length < n) do
-      if is_prime?(test_prime)
-        prime_storage.push(test_prime)
-      end
-      test_prime += 1
-    end
-  end
-
   private_class_method :biggest_prime_multiple
   private_class_method :padding
 
-=begin
-  puts Benchmark.measure{old_primes_array(100)}
-  puts Benchmark.measure{old_primes_array(200)}
-  puts Benchmark.measure{primes_array(100)}
-  puts Benchmark.measure{primes_array(200)}
-=end
 end
 
 Primes.prime_times_table(10)
