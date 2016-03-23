@@ -39,32 +39,27 @@ end
 
 def prime_times_table(n)
   primes = primes_array(n)
-  print "  "
+  biggest_multiples = []
   primes.each do |p|
-    print p.to_s + " "
+    biggest_multiples.push(primes.max * p)
+  end
+  biggest_length = biggest_multiples.max.to_s.length
+
+  print " "*(biggest_length + 1)
+  primes.each do |p|
+    print " " +  (" "*(biggest_length - p.to_s.length).abs) + p.to_s
   end
   puts ""
   primes.each do |p|
-    # for each prime, print primes_array * p
-    # EG: for p = 1, n = 5
-    # print [1 2 3 5 7]
-    # we want something that looks like
-    #  1 2 3 5 7
-    #1 1 2 3 5 7
-    #2 2 4 6 10 14
-    #3 3 6 9 15 21
-    #5 5 10 15 25 35
-    #7 7 14 21 35 49
     multiplied = [p]
     primes.each do |prime|
       multiplied.push(p * prime)
     end
     multiplied.each do |m|
-      print m.to_s + " "
+      print " " + (" "*(biggest_length - m.to_s.length).abs) + m.to_s
     end
     puts ""
-    
   end
 end
 
-prime_times_table(10)
+prime_times_table(25)
