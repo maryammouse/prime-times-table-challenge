@@ -18,8 +18,12 @@ RSpec.describe "Primes" do
   end
 
   context "prime_times_table" do
-    it "outputs the correct table for a single given number" do
+    it "outputs the correct table for n = 1" do
       expect{prime_times_table(1)}.to output("  1 \n1 1 \n").to_stdout
+    end
+
+    it "outputs the correct table for n > 1" do
+      expect{prime_times_table(2)}.to output("  1 2 \n1 1 2 \n2 2 4 \n").to_stdout
     end
   end
 end

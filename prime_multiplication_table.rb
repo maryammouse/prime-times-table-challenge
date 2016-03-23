@@ -39,8 +39,9 @@ end
 
 def prime_times_table(n)
   primes = primes_array(n)
+  print "  "
   primes.each do |p|
-    print "  " + p.to_s + " "
+    print p.to_s + " "
   end
   puts ""
   primes.each do |p|
@@ -66,4 +67,4 @@ def prime_times_table(n)
   end
 end
 
-prime_times_table(1)
+prime_times_table(10)
