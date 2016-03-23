@@ -48,7 +48,7 @@ class Primes
 
     print " "*(biggest_length + 1)
     primes.each do |p|
-      print " " +  padding(biggest_length, p) + p.to_s
+      print padding(biggest_length, p) + p.to_s
     end
 
     primes.each do |p|
@@ -58,7 +58,7 @@ class Primes
         multiplied.push(p * prime)
       end
       multiplied.each do |m|
-        print " " + padding(biggest_length, m) + m.to_s
+        print padding(biggest_length, m) + m.to_s
       end
     end
     puts ""
@@ -73,7 +73,7 @@ class Primes
   end
 
   def self.padding(biggest_length, n)
-    return " "*(biggest_length - n.to_s.length).abs
+    return " "*(biggest_length - n.to_s.length + 1).abs
   end
 
   private_class_method :biggest_prime_multiple
