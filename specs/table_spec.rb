@@ -11,8 +11,12 @@ RSpec.describe "Primes" do
       expect(is_prime?(6)).to eq(false)
     end
 
-    it "runs very quickly, even for large numbers" do
-      expect(Benchmark.realtime{is_prime?(10000000000)}).to be < 0.0005
+    it "is order sqrt(n)" do
+      puts "is_prime? basetime is"
+      n = 10000000000
+      basetime = Benchmark.realtime{is_prime?(n)}
+      puts basetime
+      expect(Benchmark.realtime{is_prime?(n**2)}).to be < Math.sqrt(basetime)
     end
   end
 
@@ -41,8 +45,9 @@ RSpec.describe "Primes" do
     end
 
     it "is of order n^2 time complexity" do
-      basetime = Benchmark.realtime{prime_times_table(100)}
-      expect(Benchmark.realtime{prime_times_table(200)}).to be < basetime**2
+      basetime = Benchmark.realtime{prime_times_table(10)}
+      puts basetime
+      expect(Benchmark.realtime{prime_times_table(20)}).to be < basetime**2
     end
   end
 end

@@ -24,6 +24,17 @@ def is_prime?(n)
   true
 end
 
+puts "is_prime?"
+puts Benchmark.realtime{is_prime?(10000000000)}
+puts Benchmark.realtime{is_prime?(100000000000000000000)}
+
+is_prime?(4)
+# sqrt(4) = 2
+# sqrt(16) = 4
+# sqrt(9) = 3
+# sqrt(81) = 9
+is_prime?(16)
+
 
 # ORDER n(sqrt(n)) (? the while loop runs until n elements are in prime_array)
 # can it be optimized? 
@@ -105,6 +116,6 @@ def prime_times_table(n)
   end
 end
 
-prime_times_table(10)
+# prime_times_table(10)
 
 
