@@ -12,13 +12,12 @@
 
 # ORDER N
 def is_prime?(n)
-  prime = true
   (2...n).each do |f|
     if (n % f) == 0
-      prime = false
+      return false
     end
   end
-  prime
+  true
 end
 
 # ORDER N (? the while loop runs until n elements are in prime_array)
@@ -62,4 +61,4 @@ def prime_times_table(n)
   end
 end
 
-# prime_times_table(25)
+prime_times_table(10)
