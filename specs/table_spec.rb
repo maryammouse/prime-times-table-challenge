@@ -12,10 +12,8 @@ RSpec.describe "Primes" do
     end
 
     it "is order sqrt(n)" do
-      puts "is_prime? basetime is"
       n = 10000000000
       basetime = Benchmark.realtime{is_prime?(n)}
-      puts basetime
       expect(Benchmark.realtime{is_prime?(n**2)}).to be < Math.sqrt(basetime)
     end
   end
@@ -29,8 +27,13 @@ RSpec.describe "Primes" do
       expect(primes_array(4)).to eq([2,3,5,7])
     end
 
-    it "does not run too slowly, even for large numbers" do
-      expect(Benchmark.realtime{primes_array(100000)}).to be < 3
+    it "is order n(log(n))(log(log(n)))" do
+      n = 1000
+      basetime = Benchmark.realtime{primes_array(n)}
+      puts Math.log(basetime)
+      upper_bound = (basetime * (Math.log(basetime))).abs
+      # using (log(log(n))) results in domain errors 
+      expect(Benchmark.realtime{primes_array(n*2)}).to be < upper_bound
 
     end
   end
@@ -46,8 +49,7 @@ RSpec.describe "Primes" do
 
     it "is of order n^2 time complexity" do
       basetime = Benchmark.realtime{prime_times_table(10)}
-      puts basetime
-      expect(Benchmark.realtime{prime_times_table(20)}).to be < basetime**2
+      expect(Benchmark.realtime{prime_times_table(20)}).to be < Math.sqrt(basetime)
     end
   end
 end
