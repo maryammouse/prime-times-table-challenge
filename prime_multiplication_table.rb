@@ -2,7 +2,7 @@
 # A prime is a number that has only itself and 1 as factors
 # Factors of n are numbers smaller than n
 
-# How do we test if it is a prime? 
+# How do we test if it is a prime?
 #
 # DO NOT WORRY ABOUT OPTIMIZING YET
 #
@@ -20,11 +20,12 @@ def is_prime?(n)
   true
 end
 
-# ORDER N (? the while loop runs until n elements are in prime_array)
-# it does not run n times. It runs more than n times.
+# ORDER N^2 (? the while loop runs until n elements are in prime_array)
+# but is_prime is also order n...so this is n^2
+# can it be optimized? 
 def primes_array(n)
   # until we have n numbers in the array,
-  # we will look for primes
+  # we will look for primes 
   prime_storage = [1]
   test_prime = 2
   while(prime_storage.length < n) do
@@ -36,8 +37,9 @@ def primes_array(n)
   prime_storage
 end
 
+# ORDER  n^2 -- can this be optimized?
 def prime_times_table(n)
-  primes = primes_array(n)
+  primes = primes_array(n) # order n^2
   biggest_multiples = []
   primes.each do |p|
     biggest_multiples.push(primes.max * p)
@@ -49,9 +51,9 @@ def prime_times_table(n)
     print " " +  (" "*(biggest_length - p.to_s.length).abs) + p.to_s
   end
   puts ""
-  primes.each do |p|
+  primes.each do |p| 
     multiplied = [p]
-    primes.each do |prime|
+    primes.each do |prime| # order n^2
       multiplied.push(p * prime)
     end
     multiplied.each do |m|
@@ -62,3 +64,17 @@ def prime_times_table(n)
 end
 
 prime_times_table(10)
+#
+
+# ORDER n (instead of n^2)
+# MATRIX = []
+# primes.each
+#   mult = []
+#   CREATE MULTIPLIED MATRIX with strings with correct padding
+# end
+# MATRIX.each do |array|
+#   print array
+# end
+#
+#
+#
