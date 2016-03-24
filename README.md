@@ -4,14 +4,29 @@
 
 I have written a program to print the table for the first 10 primes - and for the first *n* primes.
 
+[Setup] (#setup)
+[Notes] (#notes)
+[Thought Process] (#thoughts)
+
+<a name="setup"></a>
 ### Setup (how to install dependencies and run the program)
 Once you have `git clone`-d the repository, enter the directory and run `bundle install`/`bundle update`. This should download the dependencies as listed in the `Gemfile`. You can run the program by typing `ruby primes.rb` at the console -- the output should be `Primes.prime_times_table(10)`, which should be a printed multiplication table of the first 10 prime numbers.
 
+<a name="notes"></a>
 ### Notes:
 > Consider complexity. How fast does your code run? How does it scale?
 
-Currently, my `Prime.prime_times_table` method has a time complexity of *O(n^2)*. 
-This is due to the fact that I use a nested `.each` loop to print each prime's set of multiples. So far I have not been able to determine a way of doing this with less time complexity. The method has a space complexity of *O(n)* due to the `prime_array` method, which uses the **Sieve of Eratosthenes** algorithm to find the first *n* primes. Though I have optimized this code over time (you can view the commits to see this progression), I believe it can be optimized further by using a **segmented** Eratosthenes sieve instead (time complexity would remain the same.)
+Currently, my `Prime.prime_times_table` method has a time complexity 
+of *O(n^2)*. This is due to the fact that I use a nested `.each` loop to 
+print each prime's set of multiples. So far I have not been able to 
+determine a way of doing this with less time complexity. The method has 
+a space complexity of *O(n)* due to the `prime_array` method, which uses 
+the **Segmented Sieve of Eratosthenes** algorithm to find the first *n* primes. 
+You can see the optimization of this code over tim by viewing the commits.
+
+I chose to use the Eratosthene's Sieve algorithm instead of others such as the Sieve of Atkin as it 
+seems to me to be the most intuitive and simple while also being one of the most efficient
+algorithms known, especially in its Segmented form.
 
 > Write tests. Try to demonstrate TDD/BDD.
 
@@ -20,6 +35,7 @@ You can view all of the written tests in `specs/table_spec.rb`, and run them usi
 While comparing the run times of different versions of my methods, I used `Benchmark` lines within `primes.rb`, as this was 
 quick and such localized tests did not seem to fit inside the official spec file which relates to the methods more generally.
 
+<a name="thoughts"></a>
 ### Thought Process
 
 My thought process while working through this was:
@@ -58,15 +74,6 @@ I have finally implemented the segmented Eratosthenes Sieve!
 It took some time to grasp the algorithm and what exactly I needed to do with my code
 but in the end I understood - and also got the code working as it should: returning the
 correct result and returning it quickly.
-
-I chose to use Eratosthene's Sieve algorithm instead of others such as the Sieve of Atkin as it 
-seems to me to be the most intuitive and simple while also being one of the most efficient
-algorithms known. 
-
-Now, though the `prime_times_table` method will work faster, it is still of order O(n^2) due to the
-fact that for each prime we must iterate over the array of primes to print the multiples. From my
-own observation and research, I do not think there is any simple way, if any way at all, to optimize this.
-
 
 # Questions?
 
