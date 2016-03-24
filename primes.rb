@@ -107,6 +107,18 @@ class Primes
 
   private_class_method :biggest_prime_multiple
   private_class_method :padding
+  private_class_method :prime_trial
+
+end
+
+# puts Primes.primes_array(36).to_s
+# puts Primes.old_primes_array(36).to_s
+#puts Benchmark.measure{Primes.primes_array(1000000)}
+# puts Benchmark.measure{Primes.primes_array(2000000)}
+# puts Benchmark.measure{Primes.old_primes_array(1000000)}
+#puts Benchmark.measure{Primes.old_primes_array(2000000)}
+
+=begin
 
   def self.old_primes_array(n)
     if n < 6
@@ -134,14 +146,11 @@ class Primes
       unfiltered.compact
     end
   end
-end
 
-# puts Primes.primes_array(36).to_s
-# puts Primes.old_primes_array(36).to_s
-#puts Benchmark.measure{Primes.primes_array(1000000)}
-# puts Benchmark.measure{Primes.primes_array(2000000)}
-# puts Benchmark.measure{Primes.old_primes_array(1000000)}
-#puts Benchmark.measure{Primes.old_primes_array(2000000)}
+=end
+
+
+
 
 #Primes.prime_times_table(10)
 #
