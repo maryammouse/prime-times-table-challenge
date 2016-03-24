@@ -15,26 +15,47 @@ class Primes
     true
   end
 
-  # using Eratosthene's sieve, we now have O(n(log n)(log(log n)))
+  # using Eratosthene's *Segmented* sieve,
+  # we now have O(n(log n)(log(log n))) time complexity
+  # O(sqrt(n)) space complexity!
   def self.primes_array(n)
     if n < 6
-      prime_storage = []
-      test_prime = 2
-      while(prime_storage.length < n) do
-        if is_prime?(test_prime)
-          prime_storage.push(test_prime)
-        end
-        test_prime += 1
-      end
-      prime_storage
+      return prime_trial(n)
     else
-      upper_bound = n * Math.log(n) + n * Math.log(Math.log(n))
-      unfiltered = [nil, nil, *2..upper_bound]
-      (2..Math.sqrt(upper_bound).to_i).each do |i|
-        (i**2..upper_bound.to_i).step(i).each do |m|
+      max_upper_bound = (n * Math.log(n) + n * Math.log(Math.log(n))).to_i
+      segment_length = (Math.sqrt(max_upper_bound)).to_i
+      low = 2
+      high = low + segment_length
+      unfiltered = [nil, nil, *2..max_upper_bound]
+      original_primes = []
+      (low..high).each do |i|
+        ((i+i)..high).step(i).each do |m|
           if unfiltered[i]
             unfiltered[m] = nil
           end
+        end
+      end
+      original_primes = unfiltered[0, high].compact
+      low = high + 1
+      high += segment_length
+
+      while low < max_upper_bound
+        original_primes.each do |i|
+          lowest_multiple = (low/i).ceil * i
+          if lowest_multiple < low
+            lowest_multiple += i
+          end
+          (lowest_multiple..high).step(i).each do |m|
+            if unfiltered[m]
+              unfiltered[m] = nil
+            end
+          end
+        end
+
+        low += segment_length
+        high += segment_length
+        if high >= max_upper_bound
+          high = max_upper_bound
         end
       end
       unfiltered.compact
@@ -74,8 +95,21 @@ class Primes
     return " "*(biggest_length - n.to_s.length + 1).abs
   end
 
+  def self.prime_trial(n)
+    prime_storage = []
+    test_prime = 2
+    while(prime_storage.length < n) do
+      if is_prime?(test_prime)
+        prime_storage.push(test_prime)
+      end
+      test_prime += 1
+    end
+    prime_storage
+  end
+
   private_class_method :biggest_prime_multiple
   private_class_method :padding
+  private_class_method :prime_trial
 
 end
 
