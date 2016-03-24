@@ -2,7 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.2.5)
-    power_assert (0.2.7)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -16,15 +15,12 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    test-unit (3.1.8)
-      power_assert
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   rspec (~> 3.4)
-  test-unit
 
 BUNDLED WITH
    1.11.2

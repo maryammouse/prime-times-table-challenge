@@ -1,3 +1,3 @@
 require "rspec"
-require_relative '../prime_multiplication_table.rb'
+require_relative '../primes.rb'
 
