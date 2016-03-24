@@ -20,7 +20,7 @@ You can view all of the written tests in `specs/table_spec.rb`, and run them usi
 While comparing the run times of different versions of my methods, I used `Benchmark` lines within `primes.rb`, as this was 
 quick and such localized tests did not seem to fit inside the official spec file which relates to the methods more generally.
 
-### The Process, briefly
+### Thought Process
 
 My thought process while working through this was:
 
@@ -58,6 +58,14 @@ I have finally implemented the segmented Eratosthenes Sieve!
 It took some time to grasp the algorithm and what exactly I needed to do with my code
 but in the end I understood - and also got the code working as it should: returning the
 correct result and returning it quickly.
+
+I chose to use Eratosthene's Sieve algorithm instead of others such as the Sieve of Atkin as it 
+seems to me to be the most intuitive and simple while also being one of the most efficient
+algorithms known. 
+
+Now, though the `prime_times_table` method will work faster, it is still of order O(n^2) due to the
+fact that for each prime we must iterate over the array of primes to print the multiples. From my
+own observation and research, I do not think there is any simple way, if any way at all, to optimize this.
 
 
 # Questions?
