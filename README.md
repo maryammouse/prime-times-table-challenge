@@ -67,8 +67,7 @@ test the runtimes, I noticed a significant runtime decrease between my old code 
 Still seeing no way to decrease the time complexity for the `prime_times_table` method, I simply 
 refactored all of the code.I put all of the methods inside a class and separated certain blocks into their own methods to be used inside `prime_times_table`.
 
-<strikethrough>This is, at the moment, my "final" code. However, I am going to tackle the segmented Sieve for `primes_array` in
-> order to decrease the space complexity of that program.</strikethrough>
+~~This is, at the moment, my "final" code. However, I am going to tackle the segmented Sieve for `primes_array` in order to decrease the space complexity of that program. ~~
 
 ###Edit 
 I have finally implemented the segmented Eratosthenes Sieve!
