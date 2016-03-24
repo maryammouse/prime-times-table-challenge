@@ -4,6 +4,7 @@
 
 I have written a program to print the table for the first 10 primes - and for the first *n* primes.
 
+#### Table of Contents
 [Setup] (#setup)<br>
 [Notes] (#notes)<br>
 [Thought Process] (#thoughts)<br>
