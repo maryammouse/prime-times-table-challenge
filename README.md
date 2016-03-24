@@ -77,7 +77,8 @@ correct result and returning it quickly.
 
 *I have now completed the challenge - Maryam Syed, 3.24.16*
 
-(I may touch up the code here or there, but the viewer may consider the current state as its final state.)
+(I may touch up the code here or there, but the viewer may consider 
+the current state as its final state. I will not make any large changes.)
 
 # Questions?
 
