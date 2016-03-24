@@ -1,7 +1,7 @@
 require 'benchmark'
 
 class Primes
-  #
+
 # now order sqrt(n) !
   def self.is_prime?(n)
     if n % 2 == 0 && n != 2
@@ -17,7 +17,7 @@ class Primes
 
   # using Eratosthene's *Segmented* sieve,
   # we now have O(n(log n)(log(log n))) time complexity
-  # O(sqrt(n)) space complexity!
+  # AND O(sqrt(n)) space complexity!
   def self.primes_array(n)
     if n < 6
       return prime_trial(n)
@@ -62,7 +62,7 @@ class Primes
     end
   end
 
-  # ORDER  n^2 -- can this be optimized?
+  # ORDER  n^2 -- I don't think this can be optimized further.
   def self.prime_times_table(n)
     primes = primes_array(n)
     biggest_length = biggest_prime_multiple(primes).to_s.length
