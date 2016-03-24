@@ -17,6 +17,9 @@ This is due to the fact that I use a nested `.each` loop to print each prime's s
 
 You can view all of the written tests in `specs/table_spec.rb`, and run them using `rspec specs/table_spec.rb` (see Setup for information on installing dependencies for this program.
 
+While comparing the run times of different versions of my methods, I used `Benchmark` lines within `primes.rb`, as this was 
+quick and such localized tests did not seem to fit inside the official spec file which relates to the methods more generally.
+
 ### The Process, briefly
 
 My thought process while working through this was:
@@ -49,6 +52,12 @@ refactored all of the code.I put all of the methods inside a class and separated
 
 This is, at the moment, my "final" code. However, I am going to tackle the segmented Sieve for `primes_array` in
 order to decrease the space complexity of that program.
+
+###Edit 
+I have finally implemented the segmented Eratosthenes Sieve!
+It took some time to grasp the algorithm and what exactly I needed to do with my code
+but in the end I understood - and also got the code working as it should: returning the
+correct result and returning it quickly.
 
 
 # Questions?
