@@ -11,7 +11,7 @@ RSpec.describe "Primes" do
       expect(Primes.is_prime?(6)).to eq(false)
     end
 
-    it "is not grossly inefficient (it is possibly O(sqrt(n)))" do
+    it "is optimized" do
       n = 17
       basetime = Benchmark.realtime{Primes.is_prime?(n)}
       expect(Benchmark.realtime{Primes.is_prime?(293)}).to be < Math.sqrt(basetime)
@@ -29,7 +29,7 @@ RSpec.describe "Primes" do
       expect(Primes.primes_array(4)).to eq([2,3,5,7])
     end
 
-    it "is order n(log(n))(log(log(n)))" do
+    it "is optimized  - order n(log(n))(log(log(n)))" do
       n = 1000
       basetime = Benchmark.realtime{Primes.primes_array(n)}
       puts "And here goes the basetime"
@@ -52,7 +52,7 @@ RSpec.describe "Primes" do
       expect{Primes.prime_times_table(2)}.to output("   2 3\n 2 4 6\n 3 6 9\n").to_stdout
     end
 
-    it "is of order n^2 time complexity" do
+    it "is optimized" do
       basetime = Benchmark.realtime{Primes.prime_times_table(10)}
       expect(Benchmark.realtime{Primes.prime_times_table(20)}).to be < Math.sqrt(basetime)
       # need to use sqrt instead of ** 2 because while the basetime is 
@@ -60,4 +60,3 @@ RSpec.describe "Primes" do
     end
   end
 end
-
