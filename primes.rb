@@ -1,7 +1,7 @@
 require 'benchmark'
 
 class Primes
-  #
+
 # now order sqrt(n) !
   def self.is_prime?(n)
     if n % 2 == 0 && n != 2
