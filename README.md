@@ -4,9 +4,9 @@
 
 I have written a program to print the table for the first 10 primes - and for the first *n* primes.
 
-[Setup] (#setup)
-[Notes] (#notes)
-[Thought Process] (#thoughts)
+[Setup] (#setup)<br>
+[Notes] (#notes)<br>
+[Thought Process] (#thoughts)<br>
 
 <a name="setup"></a>
 ### Setup (how to install dependencies and run the program)
@@ -56,7 +56,7 @@ what I wanted and edited the methods to account for this.
 Once I had a fully functional table (all specs passing), I began to look into how I might make
 my code faster. I decided to tackle the optimization of `is_prime?` and
 `primes_array` first, as I could not immediately see any way to optimize the nested
-`for` loop area, the biggest 'bottleneck'. Through this process I discovered the **Sieve of Eratosthenes** and
+`.each` loop area, the biggest 'bottleneck'. Through this process I discovered the **Sieve of Eratosthenes** and
 began to figure out how I would use it to solve my own problem (the Sieve finds all primes less than *n* , while
 I wanted the first *n* primes). I learned about the **Prime Counting Theorem** and that there existed an equation
 for the upper bound of the *nth* prime (for *n* >= 6). This gave me the complete range I would need to iterate over for the
@@ -66,14 +66,18 @@ test the runtimes, I noticed a significant runtime decrease between my old code 
 Still seeing no way to decrease the time complexity for the `prime_times_table` method, I simply 
 refactored all of the code.I put all of the methods inside a class and separated certain blocks into their own methods to be used inside `prime_times_table`.
 
-This is, at the moment, my "final" code. However, I am going to tackle the segmented Sieve for `primes_array` in
-order to decrease the space complexity of that program.
+<strikethrough>This is, at the moment, my "final" code. However, I am going to tackle the segmented Sieve for `primes_array` in
+> order to decrease the space complexity of that program.</strikethrough>
 
 ###Edit 
 I have finally implemented the segmented Eratosthenes Sieve!
 It took some time to grasp the algorithm and what exactly I needed to do with my code
 but in the end I understood - and also got the code working as it should: returning the
 correct result and returning it quickly.
+
+*I have now completed the challenge - Maryam Syed, 3.24.16*
+
+(I may touch up the code here or there, but the viewer may consider the current state as its final state.)
 
 # Questions?
 
