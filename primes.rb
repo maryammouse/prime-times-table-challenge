@@ -15,7 +15,9 @@ class Primes
     true
   end
 
-  # using Eratosthene's sieve, we now have O(n(log n)(log(log n)))
+  # using Eratosthene's *Segmented* sieve,
+  # we now have O(n(log n)(log(log n))) time complexity
+  # O(sqrt(n)) space complexity!
   def self.primes_array(n)
     if n < 6
       return prime_trial(n)
@@ -111,104 +113,4 @@ class Primes
 
 end
 
-# puts Primes.primes_array(36).to_s
-# puts Primes.old_primes_array(36).to_s
-#puts Benchmark.measure{Primes.primes_array(1000000)}
-# puts Benchmark.measure{Primes.primes_array(2000000)}
-# puts Benchmark.measure{Primes.old_primes_array(1000000)}
-#puts Benchmark.measure{Primes.old_primes_array(2000000)}
-
-=begin
-
-  def self.old_primes_array(n)
-    if n < 6
-      prime_storage = []
-      test_prime = 2
-      while(prime_storage.length < n) do
-        if is_prime?(test_prime)
-          prime_storage.push(test_prime)
-        end
-        test_prime += 1
-      end
-      prime_storage
-    else
-      max_upper_bound = (n * Math.log(n) + n * Math.log(Math.log(n))).to_i
-      low = 2
-      high = Math.sqrt(max_upper_bound).to_i
-      unfiltered = [nil, nil, *2..max_upper_bound]
-      (2..(Math.sqrt(max_upper_bound)).to_i).each do |i|
-        (i**2..max_upper_bound).step(i).each do |m|
-          if unfiltered[i]
-            unfiltered[m] = nil
-          end
-        end
-      end
-      unfiltered.compact
-    end
-  end
-
-=end
-
-
-
-
-#Primes.prime_times_table(10)
-#
-#
-=begin
-TERRIBLE SLOW SEGMENTED SIEVE, THROW IT IN THE TRASH :O
- def self.primes_array(n)
-    if n < 6
-      prime_storage = []
-      test_prime = 2
-      while(prime_storage.length < n) do
-        if is_prime?(test_prime)
-          prime_storage.push(test_prime)
-        end
-        test_prime += 1
-      end
-      prime_storage
-    else
-      max_upper_bound = (n * Math.log(n) + n * Math.log(Math.log(n))).to_i
-      low = 2
-      high = Math.sqrt(max_upper_bound).to_i
-      segment_length = (Math.sqrt(max_upper_bound)).to_i
-      unfiltered = [nil, nil, *2..high]
-      (low..high).each do |i|
-        (i**2..high).step(i).each do |m|
-          if unfiltered[i]
-            unfiltered[m] = nil
-          end
-        end
-      end
-      original_primes = unfiltered.compact
-      prime_storage = unfiltered.compact
-      low += segment_length + 1
-      high += segment_length + 1
-
-      while low < max_upper_bound
-        unfiltered = [*low..high]
-        original_primes.each do |i|
-          lowest_multiple = (low/i).ceil * i
-          if lowest_multiple < low
-            lowest_multiple += i
-          end
-          (lowest_multiple..high).step(i).each do |m|
-            if unfiltered[m-low]
-              unfiltered[m-low] = nil
-            end
-          end
-        end
-        (prime_storage << unfiltered.compact).flatten!
-
-        low += segment_length
-        high += segment_length
-        if high >= max_upper_bound
-          high = max_upper_bound
-        end
-      end
-      prime_storage.to_s
-    end
-  end
-
-=end 
+Primes.prime_times_table(10)
