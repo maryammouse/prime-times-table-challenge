@@ -7,7 +7,7 @@ I have written a program to print the table for the first 10 primes - and for th
 #### Table of Contents
 [Setup] (#setup)<br>
 [Notes] (#notes)<br>
-[Thought Process] (#thoughts)<br>
+[Process] (#thoughts)<br>
 
 <a name="setup"></a>
 ### Setup (how to install dependencies and run the program)
@@ -37,7 +37,7 @@ While comparing the run times of different versions of my methods, I used `Bench
 quick and such localized tests did not seem to fit inside the official spec file which relates to the methods more generally.
 
 <a name="thoughts"></a>
-### Thought Process
+### Process
 
 My thought process while working through this was:
 
